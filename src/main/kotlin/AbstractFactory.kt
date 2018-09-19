@@ -10,6 +10,7 @@ abstract class PlantFactory {
     abstract fun makePlant(): Plant
 
     companion object {
+        // reified keyword: to not erase the type information at runtime
         inline fun <reified T : Plant> createFactory(): PlantFactory = when (T::class) {
             OrangePlant::class -> OrangeFactory()
             ApplePlant::class  -> AppleFactory()
